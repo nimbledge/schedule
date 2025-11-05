@@ -10,7 +10,6 @@
 
     <section>
         <h3>Classes</h3>
-        <h4>Must reload to apply.</h4>
         {#each Object.entries($classes) as [period, name]}
             <div>
                 <label>
@@ -26,5 +25,6 @@
         {/each}
 
         <Toggle bind:checked={$prefs.seniorCitizen}>Second Lunch</Toggle>
+        <h4>Must reload to apply.</h4>
     </section>
 </details>
