@@ -7,3 +7,7 @@ export const classes = persisted('classes', {
     4: "AP Computer Science A",
     5: "Physical Education",
 })
+
+export const prefs = persisted('prefs', {
+    seniorCitizen: false
+})

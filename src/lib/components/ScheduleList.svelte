@@ -5,6 +5,31 @@
     import customParseFormat from "dayjs/plugin/customParseFormat";
     import { get } from "svelte/store";
     import { classes } from "../stores/preferences";
+    import { prefs } from "../stores/preferences";
+
+    function swapObjectsInArray(arr, val1, val2) {
+        const index1 = arr.findIndex((obj) => obj.period === val1);
+        const index2 = arr.findIndex((obj) => obj.period === val2);
+
+        [arr[index1], arr[index2]] = [arr[index2], arr[index1]];
+        [
+            arr[index1].start,
+            arr[index2].start,
+            arr[index1].end,
+            arr[index2].end,
+        ] = [
+            arr[index2].start,
+            arr[index1].start,
+            arr[index2].end,
+            arr[index1].end,
+        ];
+
+        return arr;
+    }
+
+    schedule = $prefs.seniorCitizen
+        ? swapObjectsInArray(schedule, "SH", "Lunch")
+        : schedule;
 
     dayjs.extend(customParseFormat);
 

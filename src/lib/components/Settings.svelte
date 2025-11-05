@@ -1,5 +1,7 @@
 <script>
     import { classes } from "../stores/preferences";
+    import { prefs } from "../stores/preferences";
+    import { Toggle } from "flowbite-svelte";
 </script>
 
 <br />
@@ -8,6 +10,7 @@
 
     <section>
         <h3>Classes</h3>
+        <h4>Must reload to apply.</h4>
         {#each Object.entries($classes) as [period, name]}
             <div>
                 <label>
@@ -21,5 +24,7 @@
                 </label>
             </div>
         {/each}
+
+        <Toggle bind:checked={$prefs.seniorCitizen}>Second Lunch</Toggle>
     </section>
 </details>
