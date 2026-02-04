@@ -46,7 +46,7 @@
     }
 
     async function fetchMetar() {
-        if (!$prefs.airportCode || !apiKey) return;
+        if (!$prefs.metarLocation || !apiKey) return;
 
         try {
             const res = await fetch(
@@ -69,7 +69,7 @@
     }
 
     async function fetchTaf() {
-        if (!$prefs.airportCode || !apiKey) return;
+        if (!$prefs.tafLocation || !apiKey) return;
 
         try {
             const res = await fetch(
