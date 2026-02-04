@@ -10,5 +10,6 @@ export const classes = persisted('classes', {
 
 export const prefs = persisted('prefs', {
     seniorCitizen: false,
-    airportCode: "KJVL"
+    metarLocation: "K57C",
+    tafLocation: "KJVL"
 })
