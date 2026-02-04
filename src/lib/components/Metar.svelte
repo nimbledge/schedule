@@ -53,7 +53,7 @@
 
         try {
             const res = await fetch(
-                `https://avwx.rest/api/taf/${$prefs.airportCode}`,
+                `https://avwx.rest/api/taf/${$prefs.airportCode}?airport=true`,
                 {
                     headers: {
                         Authorization: `Bearer ${apiKey}`,
