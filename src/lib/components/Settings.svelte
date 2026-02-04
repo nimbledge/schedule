@@ -27,10 +27,10 @@
         <Toggle bind:checked={$prefs.seniorCitizen}>Second Lunch</Toggle>
         <br />
         <label
-            >Airport code: <input
+            >Weather location: <input
                 type="text"
                 bind:value={$prefs.airportCode}
-                placeholder="Enter airport code"
+                placeholder="Enter weather location"
                 size="25"
             /></label>
     </section>
