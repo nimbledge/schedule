@@ -37,11 +37,11 @@
         return metar
             .replace(
                 data.temperature.repr,
-                cToF(data.temperature.value.replace("M", "-")).toString().replace("-", "M"),
+                cToF(+data.temperature.value.toString().replace("M", "-")).toString().replace("-", "M"),
             )
             .replace(
                 data.dewpoint.repr,
-                cToF(data.dewpoint.value.replace("M", "-")).toString().replace("-", "M"),
+                cToF(+data.dewpoint.value.toString().replace("M", "-")).toString().replace("-", "M"),
             );
     }
 
