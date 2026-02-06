@@ -29,21 +29,24 @@
             .replace(/\s+(BECMG)/g, "\n  $1")
             .replace(/\s+(PROB\d{2})/g, "\n  $1");
     }
-
+    
     function formatMetar(data, metar) {
-        if (!data || data === "NO DATA" || data === "UNAVAILABLE") return data;
-
-        
-        return metar
-            .replace(
-                data.temperature.repr,
-                cToF(+data.temperature.value.toString().replace("M", "-")).toString().replace("-", "M"),
-            )
-            .replace(
-                data.dewpoint.repr,
-                cToF(+data.dewpoint.value.toString().replace("M", "-")).toString().replace("-", "M"),
-            );
+      if (!data || data === "NO DATA" || data === "UNAVAILABLE") return data;
+    
+      const tempF = cToF(+data.temperature.value.toString().replace("M", "-"))
+        .toString()
+        .replace("-", "M");
+    
+      const dewF = cToF(+data.dewpoint.value.toString().replace("M", "-"))
+        .toString()
+        .replace("-", "M");
+    
+      // Replace the exact temperature/dewpoint pair (e.g., "00/M02")
+      const tempDewRegex = new RegExp(`${data.temperature.repr}\\/${data.dewpoint.repr}`);
+    
+      return metar.replace(tempDewRegex, `${tempF}/${dewF}`);
     }
+
 
     async function fetchMetar() {
         if (!$prefs.metarLocation || !apiKey) return;
